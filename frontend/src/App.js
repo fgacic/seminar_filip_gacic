@@ -1,21 +1,16 @@
 import Student from "./components/Student";
-import { useSelector } from "react-redux";
 import StudentLogin from "./routes/Login";
 import {
   BrowserRouter as Router,
   Routes,
-  Route, Redirect
+  Route
 
 } from "react-router-dom";
 import Mentor from "./components/Mentor"
-import MentorLogin from "./routes/MentorLogin"
-import Main from "./components/Main"
+
 
 
 function App() {
-  const loginHandler = () => {
-
-  }
 
   return (
     <div className="App">
