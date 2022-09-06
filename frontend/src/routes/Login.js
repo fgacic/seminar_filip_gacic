@@ -40,21 +40,24 @@ const StudentLogin = ({ }) => {
     }
 
 
+
     return (
         <div className="student-login">
-            <form>
-                <label>
-                    Name:
-                    <input type="text" id="name-label" value={name} onChange={handleChangeName} />
-                </label>
-                <br />
-                <label>
-                    Pass:
-                    <input type="password" id="pass-label" value={pass} onChange={handleChangePass} />
-                </label>
-                <br />
-                <input type="submit" value="Submit" onClick={handleSubmit} />
-            </form>
+            <h1>Login</h1>
+
+            <label>
+                Name:
+                <input type="text" id="name-label" value={name} onChange={handleChangeName} />
+            </label>
+            <br />
+            <label>
+                Pass:
+                <input type="password" id="pass-label" value={pass} onChange={handleChangePass} />
+            </label>
+            <br />
+            <input type="submit" value="Submit" onClick={handleSubmit} />
+            <input type="submit" value="Register" onClick={() => { navigate('/register') }} />
+
         </div>
 
     )

@@ -24,6 +24,18 @@ export const getPredmetById = async (req, res) => {
         res.json({ message: error.message });
     }
 }
+export const getPredmetByStudentId = async (req, res) => {
+    try {
+        const predmet = await Predmet.findAll({
+            where: {
+                id: req.params.id
+            }
+        });
+        res.json(predmet[0]);
+    } catch (error) {
+        res.json({ message: error.message });
+    }
+}
 
 export const createPredmet = async (req, res) => {
     try {

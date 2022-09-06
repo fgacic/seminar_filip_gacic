@@ -6,7 +6,6 @@ class Student extends Component {
         return (
             <div className="beginning-component">
                 <h1>Student</h1>
-                {/* <Link to='/student-login'>Login</Link> */}
             </div>
         );
     }
