@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import CourseForm from './CourseForm';
 import CourseItem  from './CourseItem';
 import StudentCourses from './StudentCourses';
@@ -52,10 +52,15 @@ function Mentor() {
         "izborni": "ne"
     }]);
 
-    const openDetails = ()=>{}
-    const openEdit = ()=>{}
-    const openNewCourse = ()=>{}
+    const editCourse = (data) => {
+        console.log(data);
+    }
+    const createNewCourse = (data) => {
+        console.log(data);
+    }
     const closeForm = () =>{
+        setNewOpenedCourse(null);
+        setReadOnly(false);
         setOpenedCourse(null);
     } 
 
@@ -66,13 +71,13 @@ function Mentor() {
                 <button onClick={()=>setCurrentPage('students')}>students</button>
                 <br/>
                 <br/>
-                <button onClick={()=>{setOpenedCourse(null); nowOpenedCourse? setNewOpenedCourse(null) : setNewOpenedCourse({})}}>New Course</button>
-                {nowOpenedCourse && <CourseForm course={nowOpenedCourse} closeForm={closeForm}/>}
-                {openedCourse && <CourseForm course={openedCourse} isDetails={readOnly} closeForm={closeForm}/> }
+                {currentPage==='course' && <button onClick={()=>{setOpenedCourse(null); nowOpenedCourse? setNewOpenedCourse(null) : setNewOpenedCourse({})}}>New Course</button>}
+                {currentPage==='course' && nowOpenedCourse && <CourseForm course={nowOpenedCourse} closeForm={closeForm} submit={createNewCourse}/>}
+                {currentPage==='course' && openedCourse && <CourseForm course={openedCourse} isDetails={readOnly} closeForm={closeForm} submit={editCourse}/> }
                 <div>
                     <ul style={{minWitdh:'50%'}}>
                         {{
-                            'course':courses?.map((course)=><CourseItem course={course} openDetails/>),
+                            'course':courses?.map((course)=><CourseItem course={course} openDetails={()=>{setNewOpenedCourse(null); setReadOnly(true); setOpenedCourse(course)}} openEdit={()=>{setNewOpenedCourse(null); setReadOnly(false); setOpenedCourse(course)}}/>),
                             'students':students?.map((student)=><StudentItem student={student} openStudentInfo={(s)=>{setOpenedStudent(s); setCurrentPage('student')}}/>),
                             'student': openedStudent?.map((student)=><StudentCourses student={student}/>), 
                          }[currentPage]}
