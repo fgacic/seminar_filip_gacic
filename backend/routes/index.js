@@ -18,7 +18,7 @@ import {
     updatePredmet,
     deletePredmet
 } from "../controllers/Predmeti.js";
-import { getAllUpis, getUpisByStudentId, getUpisPredmetId, createUpis, updateUpis, deleteUpis }
+import { getAllUpis, getUpisById, createUpis, updateUpis, deleteUpis, getPredmetByStudent, ispisiPredmet }
     from "../controllers/Upisi.js"
 const router = express.Router();
 
@@ -36,11 +36,15 @@ router.patch('/predmeti/:id', updatePredmet);
 router.delete('/predmeti/:id', deletePredmet);
 
 router.get('/upisi/', getAllUpis);
-router.get('/upisi/:id', getUpisByStudentId);
+router.get('/upisi/:id', getUpisById);
 router.post('/upisi/', createUpis);
-router.patch('/upisi/:id', updateKorisnik);
-router.post('/upisi/login', loginKorisnik)
+router.patch('/upisi/:id', updateUpis);
 router.delete('/upisi/:id', deleteUpis);
+
+router.get('/korisniciprekopredmeta/:student_id', getPredmetByStudent)
+router.delete('/ispisi/:student_id/:predmet_id', ispisiPredmet)
+
+
 
 
 export default router;

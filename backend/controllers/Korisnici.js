@@ -68,7 +68,7 @@ export const loginKorisnik = async (req, res) => {
     const user = await Korisnik.findOne({ where: { email: req.body.email } });
     if (user) {
         if (req.body.password === user.password) {
-            var token = jwt.sign({ "id": user.id, "email": user.email, "first_name": user.first_name,"isMentor":user.role==="mentor" }, 'filip-secret');
+            var token = jwt.sign({ "id": user.id, "email": user.email, "first_name": user.first_name, "isMentor": user.role === "mentor" }, 'filip-secret');
             res.status(200).json({ token: token });
         } else {
             res.status(400).json({ error: "Password Incorrect" });

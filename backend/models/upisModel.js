@@ -4,7 +4,11 @@ import db from "../config/database.js";
 const { DataTypes } = Sequelize;
 
 const Upis = db.define('upisi', {
-    student_id: {
+    id: {
+        type: DataTypes.TINYINT,
+        autoIncrement: true,
+        primaryKey: true
+    }, student_id: {
         type: DataTypes.TINYINT,
         primaryKey: true
     }, predmet_id: {

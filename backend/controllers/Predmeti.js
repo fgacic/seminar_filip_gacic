@@ -1,7 +1,5 @@
 import Predmet from "../models/predmetModel.js";
 
-import jwt from 'jsonwebtoken'
-
 
 export const getAllPredmet = async (req, res) => {
     try {
